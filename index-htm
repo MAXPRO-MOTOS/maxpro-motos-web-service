@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxpro Motos</title>
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  background-image:url("images/imagen1.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  color:white;
+}
+
+.overlay{
+  background-color:rgba(0,0,0,0.6);
+  min-height:100vh;
+  padding:20px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background-color:rgba(0,0,0,0.7);
+}
+
+header h1{margin:0;color:#ff5722;}
+
+.cart{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+
+.cart img{width:40px;}
+
+section h2{
+  text-align:center;
+  color:#ff5722;
+  margin:40px 0 20px;
+}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.product-card{
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:15px;
+  text-align:center;
+}
+
+.product-card img{
+  width:100%;
+  border-radius:10px;
+}
+
+.product-card button{
+  margin-top:10px;
+  padding:10px;
+  background:#ff5722;
+  border:none;
+  border-radius:5px;
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== Carrito ===== */
+#carritoPanel{
+  background:rgba(0,0,0,0.85);
+  padding:20px;
+  margin-top:40px;
+  border-radius:10px;
+}
+
+#listaCarrito li{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+
+.total{
+  font-size:1.2em;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.whatsapp{
+  display:block;
+  margin-top:20px;
+  padding:12px;
+  background:#25D366;
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+footer{
+  margin-top:40px;
+  background:rgba(0,0,0,0.7);
+  padding:15px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+<header>
+  <h1>Maxpro Motos</h1>
+  <div class="cart">
+    <img src="images/carrito.png">
+    <span id="contador">0</span>
+  </div>
+</header>
+
+<main>
+
+<section>
+<h2>Productos</h2>
+<div class="products-grid">
+
+  <div class="product-card">
+    <img src="images/amortiguadores1.jpg">
+    <h3>Amortiguador 1</h3>
+    <p>$120</p>
+    <button onclick="agregar('Amortiguador 1',120)">Agregar</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/amortiguadores2.jpg">
+    <h3>Amortiguador 2</h3>
+    <p>$140</p>
+    <button onclick="agregar('Amortiguador 2',140)">Agregar</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/amortiguadores3.jpg">
+    <h3>Amortiguador 3</h3>
+    <p>$160</p>
+    <button onclick="agregar('Amortiguador 3',160)">Agregar</button>
+  </div>
+
+</div>
+</section>
+
+<section id="carritoPanel">
+<h2>Tu carrito</h2>
+<ul id="listaCarrito"></ul>
+<div class="total">Total: $<span id="total">0</span></div>
+
+<a id="whatsappBtn" class="whatsapp" target="_blank">
+  Enviar pedido por WhatsApp
+</a>
+</section>
+
+</main>
+
+<footer>
+Calle 7p #45-05 · 2026 Maxpro Motos
+</footer>
+
+</div>
+
+<script>
+let carrito=[];
+let total=0;
+
+function agregar(nombre,precio){
+  carrito.push({nombre,precio});
+  total+=precio;
+  actualizar();
+}
+
+function actualizar(){
+  document.getElementById("contador").innerText=carrito.length;
+  document.getElementById("total").innerText=total;
+
+  const lista=document.getElementById("listaCarrito");
+  lista.innerHTML="";
+  carrito.forEach(p=>{
+    const li=document.createElement("li");
+    li.innerHTML=${p.nombre} <span>$${p.precio}</span>;
+    lista.appendChild(li);
+  });
+
+  const texto=carrito.map(p=>${p.nombre} - $${p.precio}).join("%0A");
+  document.getElementById("whatsappBtn").href=
+    https://wa.me/573000000000?text=Pedido:%0A${texto}%0ATotal: $${total};
+}
+</script>
+
+</body>
+</html>
