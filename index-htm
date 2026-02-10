@@ -200,7 +200,7 @@ function actualizar(){
 
   const texto=carrito.map(p=>${p.nombre} - $${p.precio}).join("%0A");
   document.getElementById("whatsappBtn").href=
-    https://wa.me/573000000000?text=Pedido:%0A${texto}%0ATotal: $${total};
+    https://wa.me/573196416617?text=Pedido:%0A${texto}%0ATotal: $${total};
 }
 </script>
 
