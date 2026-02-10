@@ -135,21 +135,21 @@ footer{
 <div class="products-grid">
 
   <div class="product-card">
-    <img src="images/amortiguadores1.jpg">
+    <img src="amortiguadores1.jpg">
     <h3>Amortiguador 1</h3>
     <p>$120</p>
     <button onclick="agregar('Amortiguador 1',120)">Agregar</button>
   </div>
 
   <div class="product-card">
-    <img src="images/amortiguadores2.jpg">
+    <img src="amortiguadores2.jpg">
     <h3>Amortiguador 2</h3>
     <p>$140</p>
     <button onclick="agregar('Amortiguador 2',140)">Agregar</button>
   </div>
 
   <div class="product-card">
-    <img src="images/amortiguadores3.jpg">
+    <img src="amortiguadores3.jpg">
     <h3>Amortiguador 3</h3>
     <p>$160</p>
     <button onclick="agregar('Amortiguador 3',160)">Agregar</button>
